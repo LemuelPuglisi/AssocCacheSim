@@ -111,7 +111,7 @@ class Assoc_cache {
         void print_procedure() {
 
             system(" clear "); 
-            cout << "< CACHE SIMULATOR />" << (hitRate() >= 50 ? hclr : mclr)  <<"  [Hit rate: " << hitRate() << "% ]"<< rclr << endl << endl; 
+            cout << "< CACHE SIMULATOR />" << (hitRate() >= 30 ? hclr : mclr)  <<"  [Hit rate: " << hitRate() << "% ]"<< rclr << endl << endl; 
             cout << "current status: " << this->current_state << endl << endl; 
 
 
@@ -126,7 +126,7 @@ class Assoc_cache {
         void print_procedure( int blk, int wrd, string dir, string clr ) {
 
             system(" clear "); 
-            cout << "< CACHE SIMULATOR />" << (hitRate() >= 50 ? hclr : mclr)  <<"  [Hit rate: " << hitRate() << "% ]"<< rclr << endl << endl; 
+            cout << "< CACHE SIMULATOR />" << (hitRate() >= 30 ? hclr : mclr)  <<"  [Hit rate: " << hitRate() << "% ]"<< rclr << endl << endl; 
             cout << "current status: " << this->current_state << endl << endl; 
 
             for(int i = 0; i < blocks; i++) {
