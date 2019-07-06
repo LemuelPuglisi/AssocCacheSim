@@ -99,6 +99,7 @@ class Assoc_cache {
         int cache_size; // total size  
         int indx; // last word filled
         int *lru; // lru counter : block 
+        int tbs; // time between seconds 
 
         // main memory attachment
         main_memory *mm = NULL; 
@@ -148,7 +149,7 @@ class Assoc_cache {
 
             if(this->flow_mode == BRKPOINT) getchar(); 
             else if (this->flow_mode == TIMESTEPS) 
-            this_thread::sleep_for(std::chrono::milliseconds( TIME_BTW_STEPS ));   
+            this_thread::sleep_for(std::chrono::milliseconds( this->tbs ));   
             return; 
         }
 
@@ -246,14 +247,15 @@ class Assoc_cache {
 
     public:
 
-        // constructor ( n. of blocks, word x block, flow mode)
-        Assoc_cache( int blocks, int wxb, string flow_mode = QUICKRES ) {
+        // constructor ( n. of blocks, word x block, flow mode, seconds)
+        Assoc_cache( int blocks, int wxb, string flow_mode = QUICKRES, int seconds = TIME_BTW_STEPS ) {
             
             this->flow_mode = flow_mode;   
 
             this->blocks = blocks; 
             this->word_cap = wxb; 
             this->cache_size = blocks * word_cap; 
+            this->tbs = seconds; 
 
             this->miss = 0; 
             this->hits = 0;
