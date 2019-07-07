@@ -99,6 +99,11 @@ class Resolver {
                 return 0;
             }
 
+            if( n > 2 && this->flow_mode != TIMESTEPS) {
+                cerr << "Timing between steps allowed only with timesteps flow mode, instance terminated." << endl; 
+                return 0; 
+            }
+
             if( n > 2 && !test_flow_sec() ) {
                 cerr << "Fatal Error: seconds range must stay between 200 and 1000, instance terminated." << endl; 
                 return 0;

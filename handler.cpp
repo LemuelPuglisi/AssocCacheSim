@@ -11,7 +11,12 @@ int main(int argc, char *argv[]) {
 
     Resolver *resolver = new Resolver( argc, argv ); 
 
-    resolver->validateInputs(); 
+    if( ! resolver->validateInputs() ) {
+        
+        // corrupted params => throw error and terminate instance
+        return 0; 
+
+    } 
 
     // input file handling 
     fstream input_file; 
@@ -50,5 +55,6 @@ int main(int argc, char *argv[]) {
         c->load( address ); 
     }
     
+    input_file.close(); 
     return 0; 
 }
