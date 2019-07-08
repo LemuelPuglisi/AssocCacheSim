@@ -94,7 +94,7 @@ L'esecuzione del simulatore richiede 2/3 parametri:
 
 ### Corrispondenza dei colori
 
-- ![#e0e937](https://placehold.it/15/f03c15/000000?text=+) `Selezione di un blocco`
+- ![#e0e937](https://placehold.it/15/e0e937/000000?text=+) `Selezione di un blocco`
 - ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `Cache miss, caricamento del blocco dalla memoria principale`
 - ![#c5f015](https://placehold.it/15/c5f015/000000?text=+) `Azzeramento del contatore lru del blocco selezionato`
 - ![#991d84](https://placehold.it/15/991d84/000000?text=+) `Incremento del contatore lru del blocco selezionato`
