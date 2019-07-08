@@ -41,7 +41,7 @@ O un qualsiasi altro compilatore c++ nel caso di Windows (MingW).
 
 ### Installazione
 
-Scaricare il contenuto della repository tramite il tasto download, o in alternativa, se si dispone di git, clonale la repository con il seguente comando: 
+Scaricare il contenuto della repository tramite il tasto download, o in alternativa, se si dispone di git, clonare la repository con il seguente comando: 
 
 ```
 git clone https://github.com/LemuelPuglisi/Assoc_cache_Sim..git
@@ -70,7 +70,7 @@ Esempio di esecuzione:
 
 ## Parametri d'utilizzo
 
-# Generazione della memoria principale 
+### Generazione della memoria principale 
 
 È disponibile un tool, Utils/memGen, per generare degli input contenenti i parametri necessari al funzionamento del simulatore.
 
@@ -82,7 +82,9 @@ Eseguire il tool per creare un input personalizzato, attraverso la compilazione 
 
 ![memGen](/Images/memGen.jpg)
 
-# Esecuzione del simulatore
+L'esecuzione genererà un file di input contenente i parametri principali [ blocchi in memoria, blocchi in cache, parole per blocco, caricamenti del processore ], una matrice blocchi x parole rappresentante la memoria principale ed una quantità indicata di richieste alla cache con indirizzi casuali appartenenti alla memoria.
+
+### Esecuzione del simulatore
 
 L'esecuzione del simulatore richiede 2-3 parametri: 
 
@@ -90,13 +92,7 @@ L'esecuzione del simulatore richiede 2-3 parametri:
   - Flow mode: -q (Quick result), -b ( break points), -t (time between steps)
   - Nel caso si selezioni la modalità time between steps, è bene specificare i millisecondi p tra uno step e l'altro ( 200ms <= p <= 1000ms).
 
-
-
 ## Sviluppo
-
-Ha impiegato più tempo Cristo a risorgere, che io a completare questo progetto. 
-
-## Linguaggio
 
 * [C++](https://isocpp.org/) - Il linguaggio di programmazione utilizzato.
 
