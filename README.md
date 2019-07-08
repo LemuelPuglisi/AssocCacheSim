@@ -1,6 +1,22 @@
 # Simulatore Cache Associativa
 
-// Documentazione
+![Anteprima](/Images/simulator.jpg)
+
+### Introduzione alla memoria cache 
+
+La memoria cache è una memoria piccola e molto veloce che si interpone tra il processore e la memoria principale. 
+Le proprietà di località spaziale e temporale dei programmi permettono alla cache di portare un effettivo vantaggio prestazionale. 
+Si assuma che per velocità si intenda il reciproco del tempo di accesso a memoria. La velocità di trasferimento dati tra la cache ed il processore risulta essere radicalmente maggiore rispetto ai trasferimenti in memoria principale.  
+
+### Memoria cache con indirizzamento associativo
+
+L'indirizzamento associativo è un indirizzamento flessibile: ogni blocco di memoria è caricabile in qualsiasi posizione di cache. 
+Il criterio di caricamento del blocco dalla memoria principale alla cache corrisponde ad una relazione binaria (o funzione a più valori). 
+Ogni blocco trasferito dalla memoria principale alla memoria cache va posizionato nella prima posizione libera. Si ha conflitto solo quando la cache è piena: subentra qui l'algoritmo di sostituizione LRU. 
+
+### Algoritmo Least recently used (LRU)
+
+
 
 ## Utilizzare il simulatore
 
