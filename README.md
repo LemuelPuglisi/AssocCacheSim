@@ -10,18 +10,23 @@ Si assuma che per velocità si intenda il reciproco del tempo di accesso a memor
 
 ### Memoria cache con indirizzamento associativo
 
-L'indirizzamento associativo è un indirizzamento flessibile: ogni blocco di memoria è caricabile in qualsiasi posizione di cache. 
+L'indirizzamento associativo è un indirizzamento flessibile: ogni blocco di memoria è caricabile in qualsiasi posizione di cache. L'indirizzo di memoria centrale sarà diviso in due campi, ovvero spiazzamento, per identificare la parola, ed etichetta, per identificare il blocco. 
 Il criterio di caricamento del blocco dalla memoria principale alla cache corrisponde ad una relazione binaria (o funzione a più valori). 
 Ogni blocco trasferito dalla memoria principale alla memoria cache va posizionato nella prima posizione libera. Si ha conflitto solo quando la cache è piena: subentra qui l'algoritmo di sostituizione LRU. 
 
 ### Algoritmo Least recently used (LRU)
 
+L' algoritmo consiste nel sostituire il blocco che da più tempo risulta essere inutilizzato. Per fare ciò è necessario che il controllore di cache tenga traccia dell'utilizzo di tutti i blocchi in cache con appositi contatori. Durante l'esecuzione, i criteri di incremento dei contatori sono i seguenti:
 
+- Se c'è hit, il contatore lru della posizione interessata va azzerato, vanno incrementati di uno tutti i contatori dei blocchi inferiori.
+
+- Se c'è miss e la cache non è piena, si carica il nuovo blocco dalla memoria principale, si azzera il contatore lru di quest'ultimo e si incrementano tutti gli altri contatori.
+
+- Se c'è miss e la cache è piena, si seleziona il blocco con il valore lru maggiore, si sostituisce con il blocco prelevato in memoria, si azzera l' lru e si incrementano i contatori di tutti gli altri blocchi. 
 
 ## Utilizzare il simulatore
 
-Tramite le seguenti istruzioni sarai in grado di installare ed utilizzare il simulatore. 
-
+Le seguenti istruzioni forniranno una guida completa per l'installazione e l'utilizzo del simulatore.
 
 ### Prerequisiti
 
@@ -42,38 +47,63 @@ Scaricare il contenuto della repository tramite il tasto download, o in alternat
 git clone https://github.com/LemuelPuglisi/Assoc_cache_Sim..git
 ```
 
-Una volta scaricato il contenuto, l'eseguibile risulta essere utilizzabile in distro linux, [ test eseguiti : Ubuntu 19.04]
-Se si dispone di distro non compatibili o sistemi operativi di basso rango (Windows), allora potrete compilare direttamente l'handler con i comando che segue: 
+Una volta scaricato il contenuto, l'eseguibile risulta essere compatibile con distro debian-based [ test eseguiti : Ubuntu 19.04]
+
+La compilazione avviene nel seguente modo: 
 
 ```
 g++ handler.cpp -o cacheAssoc 
 ```
-
-Seguendo il ragionamento precedente, in caso di necessità ricompilate anche il generatore di input: 
+Si compili anche il generatore di memoria principale e loads: 
 
 ```
 g++ Utils/hexaRAM.cpp -o memGen 
 ```
+Il simulatore è pronto per l'esecuzione, sono stati forniti degli input di prova nella cartella Utils/samples/
 
-Adesso il vostro simulatore è pronto all'uso!  
+Esempio di esecuzione: 
 
-## Running the tests
+```
+./cacheAssoc Utils/samples/nice_sample.txt -t 400 
+```
 
-// descrivere l'utilizzo
+
+## Parametri d'utilizzo
+
+# Generazione della memoria principale 
+
+È disponibile un tool, Utils/memGen, per generare degli input contenenti i parametri necessari al funzionamento del simulatore.
+
+Eseguire il tool per creare un input personalizzato, attraverso la compilazione di parametri: 
+
+```
+./Utils/memGen  
+```
+
+![memGen](/Images/memGen.jpg)
+
+# Esecuzione del simulatore
+
+L'esecuzione del simulatore richiede 2-3 parametri: 
+
+  - File di input: generato tramite memGen o uno tra i samples. 
+  - Flow mode: -q (Quick result), -b ( break points), -t (time between steps)
+  - Nel caso si selezioni la modalità time between steps, è bene specificare i millisecondi p tra uno step e l'altro ( 200ms <= p <= 1000ms).
+
+
 
 ## Sviluppo
 
-Il simulatore è stato sviluppato negli stessi giorni in cui Cristo è morto e risorto.
+Ha impiegato più tempo Cristo a risorgere, che io a completare questo progetto. 
 
-## Built With
+## Linguaggio
 
 * [C++](https://isocpp.org/) - Il linguaggio di programmazione utilizzato.
 
-## Authors
+## Autore
 
-* **Lemuel Puglisi** - *Progetto Architettura degli Elaboratori* - [Charlemagne](https://lemuelpuglisi.github.io)
+* **Lemuel Puglisi** - *Progetto Architettura degli Elaboratori* - [Sito Personale](https://lemuelpuglisi.github.io)
 
-
-## License
+## Licenza
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

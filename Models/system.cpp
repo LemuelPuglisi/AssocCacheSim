@@ -171,7 +171,7 @@ class Assoc_cache {
                 lru[j] ++;  
                 print_procedure(j, -1, INC, INCRCLR);
             }
-
+            
         }
 
         // load from memory, fill empty space
